@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import Pagination from "./component/Pagination";
 import data from "./data/data.json";
+import './App.css';
 
 let PageSize = 10;
 
@@ -15,37 +16,41 @@ export default function App() {
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>FIRST NAME</th>
-            <th>LAST NAME</th>
-            <th>EMAIL</th>
-            <th>PHONE</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentTableData.map((item) => {
-            return (
+      <div className="container">
+        <div>
+          <table>
+            <thead>
               <tr>
-                <td>{item.id}</td>
-                <td>{item.first_name}</td>
-                <td>{item.last_name}</td>
-                <td>{item.email}</td>
-                <td>{item.phone}</td>
+                <th>Id</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Phone</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <Pagination
-        className="pagination-bar"
-        currentPage={currentPage}
-        totalCount={data.length}
-        pageSize={PageSize}
-        onPageChange={(page) => setCurrentPage(page)}
-      />
+            </thead>
+            <tbody>
+              {currentTableData.map((item) => {
+                return (
+                  <tr>
+                    <td>{item.id}</td>
+                    <td>{item.first_name}</td>
+                    <td>{item.last_name}</td>
+                    <td>{item.email}</td>
+                    <td>{item.phone}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <Pagination
+            className="pagination-bar"
+            currentPage={currentPage}
+            totalCount={data.length}
+            pageSize={PageSize}
+            onPageChange={(page) => setCurrentPage(page)}
+          />
+        </div>
+      </div>
     </>
   );
 }
